@@ -1,0 +1,13 @@
+<% provide(:title, "Просмотр изображений") %>
+<div id="galleries">
+	<span class="gallery-title">Просмотр изображений <br>
+	<% if user_signed_in? %>
+		<%= link_to "Загрузить изображение ->", new_gallery_path %><br>
+	<% else %>
+		<span class="count">Чтобы загружать изображения вы должны быть <%= link_to "Зарегестрированным пользователем", new_user_registration_path %> или <%= link_to "войти", new_user_session_path %> на сайт под своей учётной записью</span><br>
+	<% end %>
+	<%= link_to "К списку альбомов ->", albums_path %></span>
+	<% unless @galleries.empty? %>
+		<%= render @galleries %>
+	<% end %>
+</div>

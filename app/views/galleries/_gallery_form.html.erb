@@ -1,0 +1,19 @@
+﻿<% provide(:title, "Загрузка нового изображения") %>
+<div id="new-gallery">
+<%= form_for @gallery, html:{multipart:true} do |f| %>
+	<div>
+		<%= f.label :image, "Выберите файл для загрузки :" %><br>
+		<%= f.file_field :image %>
+		<%= f.hidden_field :image_cache %><br>
+		<span class='field-about'>К сожалению, наш хостинг не позволяет загружать изображения большого размера.<br>Выбирайте файлы для загрузки формата .jpg , .jpeg , .png или .gif иначе ничего не произойдёт</span>
+	</div>
+	<br>
+	<div>
+		<%= f.label :album_id, "Выберите альбом в который будет помещенно изображение :" %><br>
+		<%= f.collection_select(:album_id, @albums.all, :id, :name) %><br>
+		<span class='field-about'>К сожалению, наш хостинг не позволяет загружать изображения большого размера</span>
+	</div>
+	<%= f.submit "Загрузить изображение", class: "greenButton" %>
+	<br>
+<% end %>
+</div>

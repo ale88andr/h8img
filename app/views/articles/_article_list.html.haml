@@ -1,0 +1,16 @@
+-@articles.each do |article|
+	#article
+		.article-wrapper
+			#date
+				%span.article-created= article.created_at.day
+				%span.article-created= article.created_at.strftime('%b')
+				%span.article-created= article.created_at.year
+			.article-title= article.title
+			.article-info
+				%span.article-category= link_to article.category.title, article.category
+				%span.article-category= article.views
+			.clearfix
+			%p.article-body= sanitize(article.body[0..300]+'...', attributes: %w(style class id))
+		.postmeta
+			%p.article-author Автор: #{link_to article.user.username,'#'}
+			%p.link Комментариев: #{article.comments.count}&nbsp;&nbsp;#{link_to "Читать полностью", article}

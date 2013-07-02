@@ -1,0 +1,17 @@
+-provide(:title, "Создание новой статьи")
+#categoryes
+	%h1 Создание новой статьи
+	#categoryes-head Здесь вы можете создать новую статью и добавить её в категорию.
+	#new-category-form
+		= render 'article_form'
+	#article-footer
+		Если после создания статьи вы хотите что-то в ней поменять, вы всегда можете сделать это в меню 'Редактирование статьи' ! Автором статьи назначается пользовательская учётная запись под которой создаётся новая статья.
+#admin-navigation
+	= link_to "К списку статей", articles_path
+	%br
+	= link_to "К списку категорий", categories_path
+	%br
+	= link_to "Добавить статью", new_article_path
+	%br
+.clearfix
+%br

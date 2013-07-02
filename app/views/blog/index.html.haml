@@ -1,0 +1,42 @@
+=provide(:title, "Главная страница")
+#blog
+	#block
+		%span.index-title Блог /
+		%span.index-desc Последние добавленные статьи: 
+		%br
+		-@articles.each do |article|
+			.wrap
+				.last-article
+					%span.article-created Опубликованно: #{time_ago_in_words(article.created_at)}
+					.article-title= article.title
+					.article-info
+					%span.article-category= link_to article.category.title, article.category
+					%span.article-category= article.views
+					.clearfix
+					%p.article-body= sanitize(article.body[0..300].bbcode_to_html!+'...', attributes: %w(style class id))
+				%p.link Комментариев: #{article.comments.count}&nbsp;&nbsp; #{link_to "Читать полностью", article}
+		= link_to "Перейти к списку статей -> ", articles_path, class:'module-link'
+		%br
+		= link_to "Просмотр статей по категориям -> ", categories_path, class:'module-link'
+	#block
+		%span.index-title Галлерея /
+		%span.index-desc Последние добавленные изображения:
+		%br
+		.slider
+			-@images.each do |image|
+				%ul
+					%li= image_tag(image.image_url(:smartfone))
+		%br
+		.slider-nav
+			<button data-dir="prev">Предыдущее</button>
+			<button data-dir="next">Следующее</button>
+		%br
+		= link_to "Перейти к перечню изображений -> ", galleries_path, class:'module-link'
+		%br
+		= link_to "Просмотр альбомов -> ", albums_path, class:'module-link'
+		= javascript_include_tag "slider"
+	#block
+		%span.index-title Блок /
+		%span.index-desc Последние добавленные элементы:
+		%br
+%br

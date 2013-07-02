@@ -1,0 +1,18 @@
+<% provide(:title, ':. QMS .:') %>
+<div id='qms'>
+	<div id='qms-header'>
+		<h1>
+			<span class='type'>QMS</span>
+			.:.Быстрый обмен сообщениями
+		</h1>	
+	</div>
+	<div id='choise-qms'>
+		<%= image_tag "/resources/qms_icon1.png", size:"30x30" %> Привет <%= current_user.username %> с кем будем общаться?
+	</div>
+	<div id='last-qms'>
+		<b>Ваши последние полученые сообщения: </b>
+		<% unless @qms.empty? %>
+			<%= render @qms %>
+		<% end %>
+	</div>
+</div><br>

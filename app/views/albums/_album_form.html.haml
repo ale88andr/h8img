@@ -1,0 +1,13 @@
+#new-album
+	= form_for @album  do |f|
+		= render 'common/form_errors', object: @album
+		%br
+		%div
+			= f.label :name, "Название нового альбома :"
+			= f.text_field :name
+			%span.field-about Введите в это поле название нового альбома, в нём будут храниться изображения определённой тематики
+		%br
+		= f.submit "Создать альбом", class:'greenButton' 
+		%br
+		%br
+		= link_to "К списку альбомов", albums_path

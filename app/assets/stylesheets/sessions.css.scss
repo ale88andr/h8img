@@ -1,0 +1,11 @@
+@import '_base.css.scss';
+@import 'users.css.scss';
+
+/* ==========================================================================
+   Styles for session
+   ========================================================================== */
+#auth {
+	input[type="password"], input[type="text"], input[type="email"] {
+		@include inputStyle($medium - 1, 32px);
+	}
+}

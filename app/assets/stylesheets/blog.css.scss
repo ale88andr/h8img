@@ -1,0 +1,125 @@
+@import '_base.css.scss';
+
+/* ==========================================================================
+   Styles for blog/index
+   ========================================================================== */
+
+#blog {
+
+	text-align: left;
+	width: 100%;
+	background: white;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+
+	.index-title {
+		color: $h1blueText;
+		font-size: $medium;
+	}
+
+	.index-desc {
+		color: $lightGray ;
+		font-size: 13px;
+	}
+
+	#block {
+
+		padding: 15px;
+		overflow: hidden;
+
+		.link {
+				background: #dee9f4;
+				color: $blockLink;
+				min-height: 15px;
+				overflow: hidden;
+				position: relative;
+				font-size: 11px;
+				font-family: Helvetica, Arial, serif;
+				border-top: 1px dashed #DAD9D9;
+				padding: 3px;
+				top: -35px;
+				text-align: center;
+
+				a {
+					color: $blockLink;
+					text-decoration: none;
+				}
+
+				a:hover {
+					color: $blockLink;
+					text-decoration: underline;
+				}		
+			}
+
+		.wrap {
+			width: 32%;
+			float: left;
+			margin-left: 8px;
+		}
+
+		.module-link {color: $h1blueText;}
+
+		.slider {
+
+			width: 800px;
+			overflow: hidden;
+			
+			.slider-nav {
+				display: none;
+				margin-top: 1em;
+			}
+
+			.slider-nav button {
+				padding: 1em;
+				margin-right: 1em;
+				border-radius: 10px;
+				cursor: pointer;
+			}
+
+			ul {
+				width: 10000px;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			li {float: left;}
+
+		}
+
+		.last-article {
+			padding: 5px;
+			background: #edeff4;
+			border: 1px dashed #d8dfea;
+			height: 250px; 
+
+			.article-body {font-size: 0.6em;}
+
+			.article-title {
+				font-size: $large;
+				color: $h1blueText;
+			}
+
+			.article-created {
+				font-size: $small;
+				color: $lightGray;
+			}
+
+			.article-category {
+				background: rgba(130,139,152,.65);
+				opacity: 1!important;
+				text-align: center;
+				padding: 1px 5px 1px;
+				@include borderRadius (2px);
+				color: #fff;
+
+				a{
+					text-decoration: none;
+					text-transform: lowercase;
+					vertical-align: middle;
+					color: #fff;
+				}
+			}
+		}
+	}
+}

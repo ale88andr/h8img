@@ -1,0 +1,28 @@
+-provide(:title, "Свежие cтатьи")
+#articles.clearfix
+	-if !@articles.nil?
+		= render 'article_list'	
+	-else
+		.star Пока ничего нет!
+	#user-navigation
+		Представленные статьи разбиты на категории, для просмотра перечня всех категорий перейдите по ссылке ниже:
+		%br
+		%br
+		= link_to "К списку категорий", categories_path
+		%br
+	%br
+	- if user_signed_in?
+		#admin-navigation
+			Меню администратора :
+			%br
+			%br
+			= link_to "Добавить статью", new_article_path
+			%br
+			= link_to "Создать категорию", new_category_path
+			%br
+.clearfix
+%br
+= will_paginate @articles, previous_label: h("<"), next_label: h(">")
+Страница #{@articles.current_page} из #{@articles.total_pages}
+%br
+%br

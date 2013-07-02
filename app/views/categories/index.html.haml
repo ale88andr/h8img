@@ -1,0 +1,20 @@
+=provide(:title, "h8img::Категории статей")
+#articles
+	#categories-head
+		%h1 Доступные категории
+		#desc Здесь содержится перечень категорий со списком статей :
+		%br
+		- if user_signed_in?
+			#edit-nav
+				= link_to "Создать категорию", new_category_path
+		%br
+		#categoryes-list
+			-if !@categories.nil?
+				#category-list-title Список категорий :
+				-@categories.each do |c|
+					%div
+						= link_to c.title, c
+						Кол-во статей: #{c.articles.count}
+			-else
+				#no-category Пока ничего не добавленно!
+%br

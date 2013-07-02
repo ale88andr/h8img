@@ -1,0 +1,30 @@
+-provide(:title, 'h8img::Регистрация нового пользователя')
+#register
+	%h1 Регистрация нового пользователя
+	%p#registration-head
+		Добро пожаловать в меню регистрации пользователей. Здесь вы можете завести свою учётную запись на сайте <span class='sitename'>h8img</span>. Это молниеносно быстро и легко, заполните поля предоставленной формы регистрации и нажмите кнопку "Присоединиться"! Удачи!
+	= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+		= render 'common/form_errors', object: @user
+		%br
+		%div
+			= f.label :username, 'Имя пользователя :'
+			= f.text_field :username, :autofocus => true
+			%span.field-about Это имя будет использоваться вами для входа, должно содержать только буквы латинского алфавита (a-z A-Z) или цифры (0-9), не менее 3-х и не более 25 символов
+		%div
+			= f.label :email, 'Адрес электронной почты :'
+			= f.email_field :email
+			%span.field-about Нужен для обратной связи, должен быть формата username@hostname.com
+		%div
+			= f.label :password, 'Придумайте пароль :'
+			= f.password_field :password
+			%span.field-about В целях безопасности длинна пароля должна быть не менее 8-ми символов
+		%div
+			= f.label :password_confirmation, 'Повторите пароль :'
+			= f.password_field :password_confirmation
+			%span.field-about Убедитесь в правильности ввода пароля</span>
+		%div
+			= f.submit "Присоединиться", class:'greenButton'
+	%p= render "devise/shared/links"
+	#registration-footer
+		Обратите внимание: адресс электронной почты будет скрыт от других пользователей. Вы можете изменить эти, а так же другие настройки позже в своем профиле.
+%br

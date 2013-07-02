@@ -1,0 +1,9 @@
+%h3 #{current_user.username + ', ' || ''} Оставьте свой комментарий к публикации '#{@article.title}'
+= form_for ([@article, @article.comments.build]) do |f|
+	= render 'common/form_errors', object: @article 
+	%br
+	%div
+		= f.label :body, "Введите содержимое коментария :"
+		= f.text_area :body, :id => 'editor'
+	%div
+		= f.submit "Отправить комментарий", class:"greenButton"

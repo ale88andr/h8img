@@ -1,0 +1,100 @@
+-provide(:title, 'h8img::Редактирование профиля')
+#register
+  %h1 Просмотр/Редактирование профиля пользователя #{current_user.username}
+  %p#registration-head
+    Здесь вы можете изменить данные своей учётной записи!
+    %br
+    Поля, обозначенные как <span class="star">*</span> - обязательны к заполнению
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f|
+    = render 'common/form_errors', object: @user
+    %br
+    %span.field-about Ваша учётная запись была созданна : #{@user.created_at}
+    %br
+    %span.field-about В последний раз вы входили на сайт : #{@user.current_sign_in_at}
+    %br
+    %br
+    %div
+      = f.label :username, 'Имя пользователя :'
+      %span.star *
+      = f.text_field :username, :autofocus => true
+      %span.field-about Это имя будет использоваться вами для входа, должно содержать только буквы латинского алфавита (a-z A-Z) или цифры (0-9), не менее 3-х и не более 25 символов
+    %br
+    %div
+      = f.label :email, 'Адрес электронной почты :'
+      = f.email_field :email
+      %span.field-about Нужен для обратной связи, должен быть формата username@hostname.com
+    %br
+    %div
+      = f.check_box :show_email 
+      %span.field-about Показывать другим пользователям мой email
+      %br
+      %br
+    %div
+      = f.label :user_country, 'Страна в которой Вы живёте :'
+      = f.select(:user_country, options_for_select([['Выберите страну ...', ''],['Украина', 'UA'],['Россия', 'RU'],['Белоруссия', 'BE'],['Молдова', 'ML'],['Польша', 'PL'],['Казахстан', 'KZ'],['Латвия', 'LT']]))
+      %br
+      %br
+    %div
+      = f.label :user_burn, 'Дата вашего рождения :'
+      = f.date_select :user_burn, start_year:1970
+      %br
+      %span.field-about Эта информация будет доступна другим пользователям!
+      %br
+      %br
+    %div
+      = f.label :user_sex, 'Ваш пол :'
+      = f.radio_button :user_sex, '1'
+      Мужчина
+      %br
+      = f.radio_button :user_sex, '0'
+      Женщина
+      %br
+      %span.field-about Укажите ваш пол
+      %br
+      %br
+    %div
+      = f.label :user_about, 'Немного о себе :'
+      = f.text_area :user_about
+      %span.field-about Напишите здесь немного информации о ваших увлечениях, хобби или просто, что захотите ... 
+      %br
+      %br
+    %div
+      = f.label :user_avatar, "Выбор аватара :"
+      %span.star Внимание! Следует выбирать файлы изображений, размером не более 150*150 пикселей, иначе они могут быть неправильно сжаты!
+      %br
+      %span.field-about Ваш текущий аватар :
+      %br
+      = image_tag(@user.user_avatar_url) if @user.user_avatar?
+      %br
+      = f.file_field :user_avatar 
+      %br
+      = f.hidden_field :user_avatar_cache
+      %span.field-about Здесь вы можете выбрать и загрузить изображение для вашего профиля
+      %br
+      %br
+    -if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %div Currently waiting confirmation for: #{resource.unconfirmed_email}
+    %div
+      = f.label :password, "Новый пароль"
+      = f.password_field :password, :autocomplete => "off"
+      %span.field-about' %i (Оставьте это поле пустым, если не хотите его менять)
+    %br
+    %div
+      = f.label :password_confirmation, "Повтор нового пароля"
+      = f.password_field :password_confirmation
+      %span.field-about %i (Оставьте это поле пустым, если не хотите его менять)
+    %br
+    %div
+      = f.label :current_password, "Текущий (старый) пароль"
+      %span.star *
+      = f.password_field :current_password
+      %span.field-about %i Вы должны ввести свой текущий пароль, для того чтобы подтвердить изменения
+    %br
+    %div
+      = f.submit "Обновить мои Данные", class:'greenButton'
+  %h3 Удаление учётной записи
+  Недовольны? 
+  = button_to "Удалить мой аккаунт", registration_path(resource_name), :data => { :confirm => "Вы уверенны?" }, :method => :delete, class:'redButton'
+  %br
+  = link_to "Назад", :back
+%br

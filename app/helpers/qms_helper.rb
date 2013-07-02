@@ -1,0 +1,2 @@
+module QmsHelper
+end

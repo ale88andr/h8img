@@ -1,0 +1,12 @@
+.comment
+	.avatar= image_tag(comment.user.user_avatar, :size => "90x90")
+	.comment-info
+		%span.user Автор: #{link_to comment.user.username, '#'}
+		%span.comment-date Опубликованно:
+		%br 
+		#{comment.created_at.day} 
+		#{comment.created_at.strftime('%b')} 
+		#{comment.created_at.year} в 
+		#{comment.created_at.hour} : #{comment.created_at.min}
+	%hr
+	.body.clearfix= sanitize(comment.body.bbcode_to_html!, attributes: %w(style class id))

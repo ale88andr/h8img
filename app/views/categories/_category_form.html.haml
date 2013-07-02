@@ -1,0 +1,18 @@
+= form_for(@category) do |f|
+	= render 'common/form_errors', object: @category
+	%br
+	%div
+		= f.label :title, "Название новой категории :"
+		= f.text_field :title
+		%span.field-about
+	%br
+	%div
+		= f.label :description, "Описание новой категории :"
+		= f.text_area :description
+		%span.field-about
+	%br
+	= f.submit "Создать категорию", class:'greenButton'
+	%br
+	%br
+	= link_to "К списку категорий", categories_path
+%br

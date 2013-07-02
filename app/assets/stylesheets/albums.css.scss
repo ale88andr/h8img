@@ -1,0 +1,75 @@
+#albums {
+	background: #f9f7f3;
+	text-align: left;
+	width: 100%;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+	margin-bottom: 20px;
+
+	#new-album, #index-album {
+
+		padding: 15px;
+
+		input[type="text"] {
+			font-size: 14px;
+			display: block;
+			margin: 0;
+			width: 100%;
+			box-sizing: border-box;
+			border: 1px solid #d9d9d9;
+			padding: 0;
+			color: #3b3b3b;
+			line-height: 27px;
+			height: 27px;
+			text-indent: 5px;
+		}
+
+		.field-about {
+			font-size: 13px;
+			line-height: 13px;
+			color: #999999;
+			margin-top: 5px;
+		}
+
+		h1 {
+			border-bottom: 2px solid #d8dfea;
+			font-size: 22px;
+		}
+
+		.album {
+
+			float: left;
+			background: #edeff4;
+			border: 1px solid #d8dfea;
+			height: 230px;
+			width: 32%;
+			min-width: 250px;
+			margin: 3px;
+			margin-bottom: 15px; 
+			text-align: center;
+
+			a img {
+				padding: 5px;
+			}
+
+			a {
+				text-decoration: none;
+				color: #666;
+			}
+
+			a:hover {
+				text-decoration: underline;
+				color: #5a7e8b;
+			}	
+		}
+	}
+}
+
+.album-header {
+	padding: 5px;
+}
+
+span.count {
+	font-size: 12px;
+	color: #C0C0C0
+}

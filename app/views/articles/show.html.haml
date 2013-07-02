@@ -1,0 +1,47 @@
+-provide(:title, "Просмотр статьи")
+#articles
+	#article
+		.article-wrapper
+			#date
+				%span.article-created= @article.created_at.day
+				%span.article-created= @article.created_at.strftime('%b')
+				%span.article-created= @article.created_at.year
+			.article-title= @article.title
+			.article-info
+				%span.article-category= link_to @article.category.title, @article.category
+				%span.article-category= @article.views
+			.clearfix
+			%p.article-body
+				%h2 Название статьи: <b>#{@article.title}</b>
+				.text= sanitize(@article.body, attributes: %w(style class id))
+		#list-comments
+			%hr
+				-if @article.comments.any?
+					%h3 Комментарии (всего: #{@article.comments.count})
+					= render @article.comments
+				-else
+					.no-comments К этой публикации пока не оставленны комментарии
+		- if user_signed_in?
+			#add-comments
+				= render "comments/comments_form"
+		- else
+			%br
+			.no-comments Только зарегистрированные пользователи могут оставлять комментарии #{link_to "зарегестрируйтесь", new_user_registration_path} или #{link_to "войдите", new_user_session_path} на сайт под своей учётной записью
+			%br
+		.postmeta
+			%p.article-author Автор: #{link_to @article.user.username, '#'}
+			%p.link Опубликованно: #{time_ago_in_words(@article.created_at)}
+	- if user_signed_in?
+		#admin-navigation
+			Меню администратора :
+			%br
+			%br
+			= link_to "Создать категорию", new_category_path
+			%br
+			= link_to "Добавить статью", new_article_path
+			%br
+			= link_to "Редактировать статью", edit_article_path
+			%br
+			= link_to "Удалить статью", @article, method: :delete, data: { confirm: "Вы уверенны, что хотите удалить статью '#{@article.title}'" }
+.clearfix
+%br

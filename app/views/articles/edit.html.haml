@@ -1,0 +1,8 @@
+-provide(:title, "h8img::Редактирование статьи")
+#categoryes
+	%h1 Редактирование статьи #{@article.title}
+	#categoryes-head Здесь вы можете изменить выбранную статью.
+	#new-category-form
+		= render 'article_form'
+.clearfix
+%br

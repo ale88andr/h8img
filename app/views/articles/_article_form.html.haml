@@ -1,0 +1,24 @@
+﻿= form_for(@article) do |f|
+	= render 'common/form_errors', object: @article
+	%br
+	%div
+		= f.label :title, "Заголовок новой статьи :"
+		= f.text_field :title
+		%span.field-about Этот заголовок будет выводиться как название статьи при просмотре
+	%br
+	%div
+		= f.label :body, "Текст новой статьи :"
+		= f.cktext_area :body, id: 'editor', :ckeditor => {:language => "ru", :height => 700, :toolbar => "mini"} 
+		%span.field-about Введите сюда содержимое статьи - текст, изображения и т.д.
+	%br
+	%div
+		= f.label :category_id, "Выбор категории :"
+		= f.collection_select(:category_id, @categories.all, :id, :title)
+		%br
+		%span.field-about Выберите категорию в которой будет размещенна статья
+		%br
+	= f.submit "Создать статью", class:'greenButton'
+	%br
+	%br
+	= link_to "К списку статей", articles_path
+%br

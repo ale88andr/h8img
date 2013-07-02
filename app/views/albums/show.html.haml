@@ -1,0 +1,18 @@
+- provide(:title, "Просмотр изображений альбома")
+- lastImage = @album.galleries.first
+#galleries
+	.album-header
+		%h2 Изображения альбома '#{@album.name}' :
+		- unless user_signed_in?
+			%span Чтобы загружать изображения в альбомы вы должны быть #{link_to "Зарегестрированным пользователем", new_user_registration_path} или #{ link_to "войти", new_user_session_path} на сайт под своей учётной записью
+			%br
+			%br
+		%span.count Количество изображений: #{@album.galleries.count}
+		%br
+		%span.count Последнее изображение было загруженно в этот альбом #{lastImage.created_at.day} #{lastImage.created_at.strftime('%b')} #{lastImage.created_at.year} в #{lastImage.created_at.hour}:#{lastImage.created_at.min}
+	%br
+	- @album.galleries.each do |image|
+		#gallery
+			= link_to image_tag(image.image_url(:thumb)), image
+	.clearfix
+%br

@@ -1,0 +1,30 @@
+﻿<% provide(:title, "Просмотр изображения") %>
+<div id="galleries">
+<div id="image-column">
+	<div id="image-column-download">
+	Скачать :
+	<%= link_to "Для смартфона (800x480 px)", '#' %>
+	<%= link_to "Для планшета (1280x800 px)", '#' %>
+	<%= link_to "Оригинал", '#' %>
+	</div>
+	<div id="image-column-view">
+	Просмотр:
+	<%= link_to "Для смартфона (800x480 px)", @gallery.image_url(:smartfone) %>
+	<%= link_to "Для планшета (1280x800 px)", @gallery.image_url(:tablet) %>
+	<%= link_to "Оригинал", @gallery.image_url %>
+	</div>
+	<div id="image-column-menu">
+	Меню :
+	<%= link_to "Альбомы", albums_path %>
+	<%= link_to "Изображения", galleries_path %>
+	</div>
+	<% if user_signed_in? %>
+		<div id="image-column-admin">
+		Действия :
+		<%= link_to "Удалить", @category, method: :delete, data: { confirm: "Вы уверенны, что хотите удалить это изображение?" }%>
+		<%= link_to "Загрузить", new_gallery_path %>
+		</div>
+	<% end %>
+	</div>
+<div id="image"><%= image_tag @gallery.image_url(:smartfone) %></div>
+</div>

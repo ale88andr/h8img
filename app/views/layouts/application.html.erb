@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title><%= yield(:title) %></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Stylesheet -->
+        <%= stylesheet_link_tag    "normalize", :media => "all" %>
+        <%= stylesheet_link_tag    "main", :media => "all" %>
+        <!-- rails default -->
+        <%= stylesheet_link_tag    "application", :media => "all" %>
+        <!-- Javascript -->
+        <%= javascript_include_tag "vendor/modernizr-2.6.2.min" %>
+        <%= javascript_include_tag "vendor/jquery-1.8.3.min" %>
+        <!-- rails default -->
+        <%= javascript_include_tag "application" %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="head">
+            <div id="logo-wrapper"><div id="logo"><%=link_to '', root_path, class:"a-logo" %></div></div>
+        </div>
+        <header>
+            <div id="header-nav">
+                <ul>
+                    <li><%=link_to 'Статьи', articles_path, class:"navigate" %></li>
+                    <li><%=link_to 'Галлерея', albums_path, class:"navigate" %></li>
+                    <li><%= link_to 'QMS', '#' %></li>
+                </ul>
+            <div id="session">
+                <% if user_signed_in? %>
+                    Вы вошли под именем <%= current_user.username %>, <%= link_to "Выйти(#{current_user.username})", destroy_user_session_path, :method => :delete %> | <%= link_to "Профиль", edit_user_registration_path %>
+                <% else %>
+                    <%= link_to 'Вход', new_user_session_path %> | <%= link_to 'Зарегистрироваться',  new_user_registration_path %>
+                <% end %>
+            </div><!-- end session -->
+            </div><!-- end header-nav -->
+        </header>
+        <div id="container">
+            <div id="content">
+                <div id="flash-message">
+                    <% flash.each do |key,value| %>
+                        <span class='<%= key %>'>Сообщение: <%= value %> </span>
+                    <% end %>
+                </div><!-- end flash-message -->
+                <!-- Rails block -->
+                <%= yield %>
+            </div><!-- end content -->
+        </div><!-- end container -->
+        <footer>
+            <span id="footer-info">Using </span><%= image_tag "/resources/ruby.png", size:"50x50" %>
+            <span id="copyright"> / Copyright <%=Date.today.year%> Alexandr Nekrasov</span>
+        </footer>
+        <%= javascript_include_tag "plugins" %>
+        <%= javascript_include_tag "main" %>		
+    </body>
+</html>

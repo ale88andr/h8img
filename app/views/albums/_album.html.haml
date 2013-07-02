@@ -1,0 +1,8 @@
+.album
+	= link_to image_tag(album.galleries.first.image_url(:thumb), size:"250x175"), album.galleries
+	%br
+	= link_to album.name, album
+	%br
+	%span.count Количество изображений: #{album.galleries.count}
+	%br
+	%span.count Последнее обновление: #{album.galleries.first.created_at.day} #{album.galleries.first.created_at.strftime('%b')} #{album.galleries.first.created_at.year} в #{album.galleries.first.created_at.hour}:#{album.galleries.first.created_at.min}

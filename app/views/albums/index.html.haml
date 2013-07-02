@@ -1,0 +1,15 @@
+-provide(:title, "Просмотр альбомов")
+#albums
+	#index-album
+		%h1 Альбомы изображений :
+		-unless @albums.empty?
+			= render @albums
+		.clearfix
+		%br
+		%div
+			-if user_signed_in?
+				= link_to "Создать альбом ->", new_album_path
+				%br
+				= link_to "Загрузить изображение ->", new_gallery_path
+			-else
+				%span Чтобы загружать изображения в альбомы вы должны быть #{link_to "Зарегестрированным пользователем", new_user_registration_path} или #{ link_to "войти", new_user_session_path} на сайт под своей учётной записью

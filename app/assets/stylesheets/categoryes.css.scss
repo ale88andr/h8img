@@ -1,0 +1,64 @@
+@import '_base.css.scss';
+
+/* ==========================================================================
+   Styles for categories
+   ========================================================================== */
+
+#categoryes {
+
+	@include borderRadius(5px);
+
+	margin: 0px;
+	text-align: left;
+	width: 70%;
+	padding: 25px;
+	background: #fff;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+	float: left;
+
+	#no-category {color: red;}
+
+	label {
+		font-size: $small +1;
+		line-height: $small +1;
+		display: block;
+		color: #424242;
+		margin-bottom: 7px;
+		font-weight: bold;
+		font-family: 'arial', 'sans-serif';
+	}
+
+	#registration-head {font-style: italic;}
+
+	input[type="text"], textarea {@include inputStyle($small + 2, 27px);}
+
+	textarea {height: 630px;}
+
+	#new-category-form {
+		// !TODO
+	}
+
+	#article-footer {
+		background: #f3f3f3;
+		border-top: 1px solid #DAD9D9;
+		padding: 20px 25px;
+		width: 100%;
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		position: relative;
+		left: -25px;
+		right: -25px;
+		bottom: -25px;
+		font-size: 0.9em;
+	}
+}
+
+#categoryes-list {
+
+	#category-list-title {
+		background: #edeff4;
+		color: #333;
+		padding: 5px;
+		margin-bottom: 15px;
+	}
+}

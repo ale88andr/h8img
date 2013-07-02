@@ -1,0 +1,31 @@
+=provide(:title, "h8img::Просмотр категории")
+#articles
+	#categories-head
+		%h2 Просмотр статей категории "#{@category.title}"</h2>
+		#desc Описание: #{@category.description}
+		- unless user_signed_in?
+			%br
+			%span Чтобы иметь возможность оформлять и создавать статьи вы должны быть #{link_to "Зарегестрированным пользователем", new_user_registration_path} или #{link_to "войти", new_user_session_path} на сайт под своей учётной записью
+	-@articles = @category.articles
+	= render 'articles/article_list'
+	#user-navigation
+		Здесь представленны категории статей, для просмотра всех статей перейдите по ссылке ниже:
+		%br
+		%br
+		= link_to "К списку статей", articles_path
+		%br
+	%br
+	- if user_signed_in?
+		#admin-navigation
+			Меню администратора :
+			%br
+			%br
+			= link_to "Добавить статью", new_article_path 
+			%br
+			= link_to "Создать категорию", new_category_path 
+			%br
+			= link_to "Редактировать эту категорию", edit_category_path
+			%br
+			= link_to "Удалить эту категорию", @category, method: :delete, data: { confirm: "Вы уверенны, что хотите удалить категорию '#{@category.title}'" }
+.clearfix
+%br

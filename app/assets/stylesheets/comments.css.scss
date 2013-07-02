@@ -1,0 +1,50 @@
+@import '_base.css.scss';
+
+/* ==========================================================================
+   Styles for comments
+   ========================================================================== */
+
+.comment {
+
+	margin: 5px 10px;
+	padding: 5px;
+	background: $noticeBackground;
+	border: 1px solid #d3dae5;
+
+	.comment-info {overflow: hidden;}
+	
+	.avatar {
+		float: left;
+		height: 100%;
+	}
+	 
+	.user {
+		color: #999;
+		font-size: 14px;
+
+		a {
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+		}
+	}
+
+	.comment-date {
+		text-align: center;
+		font-size: 12px;
+		color: $lightGray;
+		float: right;
+		padding-right: 10px;
+	}
+
+	.body {
+		font-size: 14px;
+		color: #666;
+	}
+
+	hr {
+		margin: 5px;
+		padding: 5px;
+		color: #d3dae5;
+	}
+}

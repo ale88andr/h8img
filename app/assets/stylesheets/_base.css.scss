@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+
+   /*
+		color
+   */
+
+	$blockLink: #365c7f;
+	$h1blueText: #3b5998;
+	$lightGray: #B7BEC6;
+	$noticeBackground: #edeff4;
+	
+	/*
+		fonts
+	*/
+
+	$medium: 17px; 
+	$small: 12px;
+	$large: 19px;
+
+	/*
+		mixins
+	*/
+
+	@mixin borderRadius ($radius){
+		-webkit-border-radius: $radius;
+		-moz-border-radius: $radius;
+		-o-border-radius: $radius;
+		border-radius: $radius;
+	}
+
+	@mixin inputStyle ($fontsize, $height) {
+		font-size: $fontsize;
+		display: block;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+		border: 1px solid #d9d9d9;
+		padding: 0;
+		color: #3b3b3b;
+		line-height: $height;
+		height:$height;
+		text-indent: 5px;
+	}
+
+
+

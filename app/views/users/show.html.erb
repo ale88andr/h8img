@@ -1,0 +1,28 @@
+<div id='index-user'>
+	<div id='user-info'>
+		<h2>Просмотр профиля пользователя '<%= @user.username %>'</h2>
+		<div id='avatar'><%= image_tag(@user.user_avatar) %></div>
+		<div id='desc'>
+			Имя: <b><%= @user.username %></b><br>
+			Email: <i><% if @user.show_email == 1 %>
+						<%= @user.email %>
+					<% else %>
+						<i>Пользователь предпочёл скрыть эти данные</i>
+					<% end %>
+			</i><br>
+			<span class='reg-date'>Зарегистрировался: <%= @user.created_at.day %> <%= @user.created_at.strftime('%b') %> <%= @user.created_at.year %> в <%= @user.created_at.hour %>:<%= @user.created_at.strftime('%M') %></span>
+			<i> (<%= time_ago_in_words(@user.created_at) %> назад)</i><br>
+			Пол: <%= @user.user_sex %><br>
+			Страна: <%= @user.user_country %><br>
+			Дата рождения: <%= @user.user_burn.year %> <%= @user.user_burn.strftime('%b') %> <%= @user.user_burn.day %><br>
+		</div><br><div class="clearfix"></div>
+		<div id="user-about">
+			Кратко о пользователе: <br><%= @user.user_about %>
+		</div>
+	</div>
+	<div id='microposts'>
+		<% unless @user.microposts.empty? %>
+				<%= render @microposts %>
+		<% end %>
+	</div>
+</div><br>
